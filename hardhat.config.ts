@@ -70,6 +70,8 @@ export default {
     }
   },
   mocha: {
+    grep: "@skip-on-coverage", // Find everything with this tag
+    invert: true,
     timeout: 20000
   }
 };

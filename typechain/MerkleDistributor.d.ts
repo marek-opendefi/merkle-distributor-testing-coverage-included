@@ -21,17 +21,12 @@ import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
 interface MerkleDistributorInterface extends ethers.utils.Interface {
   functions: {
-    "c_0x20e4f869(bytes32)": FunctionFragment;
     "claim(uint256,address,uint256,bytes32[])": FunctionFragment;
     "isClaimed(uint256)": FunctionFragment;
     "merkleRoot()": FunctionFragment;
     "token()": FunctionFragment;
   };
 
-  encodeFunctionData(
-    functionFragment: "c_0x20e4f869",
-    values: [BytesLike]
-  ): string;
   encodeFunctionData(
     functionFragment: "claim",
     values: [BigNumberish, string, BigNumberish, BytesLike[]]
@@ -46,10 +41,6 @@ interface MerkleDistributorInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "token", values?: undefined): string;
 
-  decodeFunctionResult(
-    functionFragment: "c_0x20e4f869",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "isClaimed", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "merkleRoot", data: BytesLike): Result;
@@ -106,11 +97,6 @@ export class MerkleDistributor extends BaseContract {
   interface: MerkleDistributorInterface;
 
   functions: {
-    c_0x20e4f869(
-      c__0x20e4f869: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<[void]>;
-
     claim(
       index: BigNumberish,
       account: string,
@@ -129,11 +115,6 @@ export class MerkleDistributor extends BaseContract {
     token(overrides?: CallOverrides): Promise<[string]>;
   };
 
-  c_0x20e4f869(
-    c__0x20e4f869: BytesLike,
-    overrides?: CallOverrides
-  ): Promise<void>;
-
   claim(
     index: BigNumberish,
     account: string,
@@ -149,11 +130,6 @@ export class MerkleDistributor extends BaseContract {
   token(overrides?: CallOverrides): Promise<string>;
 
   callStatic: {
-    c_0x20e4f869(
-      c__0x20e4f869: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     claim(
       index: BigNumberish,
       account: string,
@@ -181,11 +157,6 @@ export class MerkleDistributor extends BaseContract {
   };
 
   estimateGas: {
-    c_0x20e4f869(
-      c__0x20e4f869: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
     claim(
       index: BigNumberish,
       account: string,
@@ -205,11 +176,6 @@ export class MerkleDistributor extends BaseContract {
   };
 
   populateTransaction: {
-    c_0x20e4f869(
-      c__0x20e4f869: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
     claim(
       index: BigNumberish,
       account: string,
