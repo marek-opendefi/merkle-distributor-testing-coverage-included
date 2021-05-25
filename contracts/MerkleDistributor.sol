@@ -1,13 +1,17 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity =0.6.11;
+pragma solidity =0.8.4;
 
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/cryptography/MerkleProof.sol";
+//import "@openzeppelin/contracts/cryptography/MerkleProof.sol";
+import "./library/MerkleProof.sol";
 import "./interfaces/IMerkleDistributor.sol";
 
 contract MerkleDistributor is IMerkleDistributor {
     address public immutable override token;
     bytes32 public immutable override merkleRoot;
+    using SafeERC20 for IERC20;
+
 
     // This is a packed array of booleans.
     mapping(uint256 => uint256) private claimedBitMap;
@@ -40,7 +44,8 @@ contract MerkleDistributor is IMerkleDistributor {
 
         // Mark it claimed and send the token.
         _setClaimed(index);
-        require(IERC20(token).transfer(account, amount), 'MerkleDistributor: Transfer failed.');
+        //require(IERC20(token).transfer(account, amount), 'MerkleDistributor: Transfer failed.');
+        SafeERC20.safeTransfer(IERC20(token), account, amount);
 
         emit Claimed(index, account, amount);
     }
