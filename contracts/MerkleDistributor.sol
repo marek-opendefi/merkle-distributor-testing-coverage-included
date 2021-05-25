@@ -2,7 +2,7 @@
 pragma solidity =0.8.4;
 
 import "./SafeERC20.sol";
-import "./IERC20.sol";
+import "./interfaces/IERC20.sol";
 //import "./MerkleProof.sol";
 import "./MerkleProof.sol";
 import "./interfaces/IMerkleDistributor.sol";
